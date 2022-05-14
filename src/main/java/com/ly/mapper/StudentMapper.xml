@@ -2,10 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ly.mapper.StudentMapper">
+<!-- 新增学生数据   -->
     <insert id="addStudent" parameterType="Student">
         insert into student(sNo, sName, sGender, specialityName, sDept, className)
         VALUES(#{sNo},#{sName},#{sGender},#{specialityName},#{sDept},#{className})
     </insert>
+<!--  根据sNo删除学生数据  -->
     <delete id="deleteStudent" parameterType="String">
         delete from student where sNo = #{sNo}
     </delete>
