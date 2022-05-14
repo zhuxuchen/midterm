@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ly.mapper.TeacherMapper">
+
+    <resultMap id="TeacherMapper" type="Teacher">
+    <id property="tNo" column="tNo"/>
+    <result property="tName" column="tName"/>
+    <result property="tPwd" column="tPwd"/>
+    <result property="tDept" column="tDept"/>
+    <result property="logintime" column="logintime"/>
+    <collection property="course" ofType="Course">
+        <id property="cNo" column="cNo"/>
+        <result property="cName" column="cName"/>
+    </collection>
+    </resultMap>
+    <select id="selectTeacherByNo" resultMap="TeacherMapper" parameterType="String">
+        select t.* ,c.cNo, c.cName from teacher as t
+        left join tcc tcc on t.tNo = tcc.teacherNo
+        left join course c on tcc.courseNo = c.cNo
+        where t.tNo = #{tNo}
+    </select>
+</mapper>
