@@ -46,9 +46,17 @@ public class test {
         sqlSession.close();
     }
 
+    public static void selectStudentAndExp(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
+        System.out.println(studentMapper.selectStudentAndExp());
+        sqlSession.close();
+    }
+
     public static void main(String[] args) {
         //addStudents();
         //deleteStudent();
-        updateStudent();
+        //updateStudent();
+        selectStudentAndExp();
     }
 }

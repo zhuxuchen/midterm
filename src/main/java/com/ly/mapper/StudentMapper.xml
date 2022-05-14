@@ -33,4 +33,26 @@
         </set>
         where sNo = #{sNo}
     </update>
+<!--  一对一，查询出学生信息以及班级信息  -->
+    <resultMap id="StudentAndExpMapper" type="Student">
+        <id property="sNo" column="sNo"/>
+        <result property="sName" column="sName"/>
+        <result property="sGender" column="sGender"/>
+        <result property="specialityName" column="specialityName"/>
+        <result property="sDept" column="sDept"/>
+        <result property="className" column="className"/>
+        <association property="exprecord" javaType="Exprecord">
+            <id property="sNo" column="sNo"/>
+            <result property="expNo" column="expNo"/>
+            <result property="recordUid" column="recordUid"/>
+            <result property="grade" column="grade"/>
+            <result property="expContent" column="expContent"/>
+            <result property="state" column="state"/>
+            <result property="lines" column="lines"/>
+        </association>
+    </resultMap>
+    <select id="selectStudentAndExp" resultMap="StudentAndExpMapper">
+        select *from student
+        left join exprecord e on student.sNo = e.sNo
+    </select>
 </mapper>

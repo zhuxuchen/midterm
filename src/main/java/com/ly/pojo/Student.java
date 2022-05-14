@@ -7,6 +7,7 @@ public class Student {
     String specialityName;
     String sDept;
     String className;
+    Exprecord exprecord;
 
     public String getsNo() {
         return sNo;
@@ -58,13 +59,14 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
+        return "\nStudent{" +
                 "sNo='" + sNo + '\'' +
                 ", sName='" + sName + '\'' +
                 ", sGender='" + sGender + '\'' +
                 ", specialityName='" + specialityName + '\'' +
                 ", sDept='" + sDept + '\'' +
                 ", className='" + className + '\'' +
+                ", exprecord=" + exprecord +
                 '}';
     }
 }
