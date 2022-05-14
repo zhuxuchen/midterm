@@ -11,4 +11,26 @@
     <delete id="deleteStudent" parameterType="String">
         delete from student where sNo = #{sNo}
     </delete>
+<!--  根据sNo更新学生数据  -->
+    <update id="updateStudent" parameterType="Student">
+        update student
+        <set>
+            <if test="sName != null and sName != ''">
+                sName =#{sName},
+            </if>
+            <if test="sGender != null and sGender != ''">
+                sGender =#{sGender},
+            </if>
+            <if test="specialityName != null and specialityName != ''">
+                specialityName =#{specialityName},
+            </if>
+            <if test="sDept != null and sDept != ''">
+                sDept =#{sDept},
+            </if>
+            <if test="className != null and className != ''">
+                className =#{className},
+            </if>
+        </set>
+        where sNo = #{sNo}
+    </update>
 </mapper>

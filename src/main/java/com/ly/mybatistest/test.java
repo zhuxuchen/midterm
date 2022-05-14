@@ -32,8 +32,23 @@ public class test {
         sqlSession.commit();
         sqlSession.close();
     }
+
+    public static void updateStudent(){
+        Student student = new Student();
+        student.setsNo("20161202889");
+        student.setsName("小王");
+        student.setsGender("男");
+        student.setSpecialityName("信息管理与信息系统");
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
+        System.out.println(mapper.updateStudent(student));
+        sqlSession.commit();
+        sqlSession.close();
+    }
+
     public static void main(String[] args) {
         //addStudents();
-        deleteStudent();
+        //deleteStudent();
+        updateStudent();
     }
 }
