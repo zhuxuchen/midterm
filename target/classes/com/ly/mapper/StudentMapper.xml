@@ -6,5 +6,7 @@
         insert into student(sNo, sName, sGender, specialityName, sDept, className)
         VALUES(#{sNo},#{sName},#{sGender},#{specialityName},#{sDept},#{className})
     </insert>
-
+    <delete id="deleteStudent" parameterType="String">
+        delete from student where sNo = #{sNo}
+    </delete>
 </mapper>

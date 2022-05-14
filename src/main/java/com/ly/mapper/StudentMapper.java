@@ -8,6 +8,6 @@ public interface StudentMapper {
     //更新学生的信息
     int updateStudent(Student student);
     //删除学生的信息
-    int deleteStudent(Student student);
+    int deleteStudent(String sNo);
 
 }

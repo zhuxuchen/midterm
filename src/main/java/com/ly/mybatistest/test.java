@@ -1,5 +1,6 @@
 package com.ly.mybatistest;
 
+import com.ly.mapper.StudentMapper;
 import com.ly.pojo.Student;
 import org.apache.ibatis.session.SqlSession;
 
@@ -23,7 +24,16 @@ public class test {
         sqlSession.close();
     }
 
+    public static void deleteStudent(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        StudentMapper mapper =sqlSession.getMapper(StudentMapper.class);
+        int row =mapper.deleteStudent("20000000000");
+        System.out.println("删除成功！受影响的行"+row);
+        sqlSession.commit();
+        sqlSession.close();
+    }
     public static void main(String[] args) {
-        addStudents();
+        //addStudents();
+        deleteStudent();
     }
 }
