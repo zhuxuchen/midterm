@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ly.mapper.TeacherMapper">
-
-    <resultMap id="TeacherMapper" type="Teacher">
+<!--一对多，查询教师的授课信息-->
+    <resultMap id="TeacherMapper1" type="Teacher">
     <id property="tNo" column="tNo"/>
     <result property="tName" column="tName"/>
     <result property="tPwd" column="tPwd"/>
@@ -14,10 +14,31 @@
         <result property="cName" column="cName"/>
     </collection>
     </resultMap>
-    <select id="selectTeacherByNo" resultMap="TeacherMapper" parameterType="String">
+    <select id="selectTeacherAndCourseByNo" resultMap="TeacherMapper1" parameterType="String">
         select t.* ,c.cNo, c.cName from teacher as t
         left join tcc tcc on t.tNo = tcc.teacherNo
         left join course c on tcc.courseNo = c.cNo
+        where t.tNo = #{tNo}
+    </select>
+<!--  多对多，查询教师教的班级  -->
+    <resultMap id="TeacherMapper2" type="Teacher">
+        <id property="tNo" column="tNo"/>
+        <result property="tName" column="tName"/>
+        <result property="tPwd" column="tPwd"/>
+        <result property="tDept" column="tDept"/>
+        <result property="logintime" column="logintime"/>
+        <collection property="classes" ofType="Classes">
+            <id property="classID" column="classID"/>
+            <result property="year" column="year"/>
+            <result property="speciality" column="speciality"/>
+            <result property="className" column="className"/>
+            <result property="fullName" column="fullName"/>
+        </collection>
+    </resultMap>
+    <select id="selectTeacherAndClassByNo" resultMap="TeacherMapper2" parameterType="String">
+        select t.*,c.classID,c.year,c.speciality,c.className,c.fullName from teacher as t
+        left join tcc tcc on t.tNo = tcc.teacherNo
+        left join classes c on tcc.classesId = c.classID
         where t.tNo = #{tNo}
     </select>
 </mapper>

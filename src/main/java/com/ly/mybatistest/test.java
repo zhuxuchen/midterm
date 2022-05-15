@@ -1,5 +1,6 @@
 package com.ly.mybatistest;
 
+import com.ly.mapper.ClassMapper;
 import com.ly.mapper.StudentMapper;
 import com.ly.mapper.TeacherMapper;
 import com.ly.pojo.Student;
@@ -68,12 +69,20 @@ public class test {
         sqlSession.close();
     }
 
+    public static void selectClassAndTeacherById(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        ClassMapper classMapper = sqlSession.getMapper(ClassMapper.class);
+        System.out.println(classMapper.selectClassAndTeacherById(17));
+        sqlSession.close();
+    }
+
     public static void main(String[] args) {
         //addStudents();
         //deleteStudent();
         //updateStudent();
         //selectStudentAndExp();
         //selectTeacherAndCourseByNo();
-        selectTeacherAndClassByNo();
+        //selectTeacherAndClassByNo();
+        selectClassAndTeacherById();
     }
 }
