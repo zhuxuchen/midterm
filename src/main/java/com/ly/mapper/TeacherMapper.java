@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface TeacherMapper {
     //查询教师的授课信息
-    List<Teacher> selectTeacherByNo(String tNo);
+    Teacher selectTeacherAndCourseByNo(String tNo);
+    //查询教师教的班级
+    List<Teacher> selectTeacherAndClassByNo(String tNo);
 }

@@ -54,17 +54,26 @@ public class test {
         sqlSession.close();
     }
 
-    public static void selectTeacherByNo(){
+    public static void selectTeacherAndCourseByNo(){
         SqlSession sqlSession = MybatisUtils.getSqlSession();
         TeacherMapper teacherMapper = sqlSession.getMapper(TeacherMapper.class);
-        System.out.println(teacherMapper.selectTeacherByNo("1270013"));
+        System.out.println(teacherMapper.selectTeacherAndCourseByNo("1270013"));
         sqlSession.close();
     }
+
+    public static void selectTeacherAndClassByNo(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        TeacherMapper teacherMapper = sqlSession.getMapper(TeacherMapper.class);
+        System.out.println(teacherMapper.selectTeacherAndClassByNo("1270013"));
+        sqlSession.close();
+    }
+
     public static void main(String[] args) {
         //addStudents();
         //deleteStudent();
         //updateStudent();
         //selectStudentAndExp();
-        selectTeacherByNo();
+        //selectTeacherAndCourseByNo();
+        selectTeacherAndClassByNo();
     }
 }

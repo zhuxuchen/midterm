@@ -9,6 +9,15 @@ public class Teacher {
     String tDept;
     String logintime;
     List<Course> course;
+    List<Classes> classes;
+
+    public List<Classes> getClasses() {
+        return classes;
+    }
+
+    public void setClasses(List<Classes> classes) {
+        this.classes = classes;
+    }
 
     public String gettNo() {
         return tNo;
@@ -60,13 +69,14 @@ public class Teacher {
 
     @Override
     public String toString() {
-        return "Teacher{" +
+        return "\nTeacher{" +
                 "tNo='" + tNo + '\'' +
                 ", tName='" + tName + '\'' +
                 ", tPwd='" + tPwd + '\'' +
                 ", tDept='" + tDept + '\'' +
                 ", logintime='" + logintime + '\'' +
                 ", course=" + course +
-                "}";
+                ", classes=" + classes +
+                '}';
     }
 }

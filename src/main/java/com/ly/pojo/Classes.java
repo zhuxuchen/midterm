@@ -1,11 +1,22 @@
 package com.ly.pojo;
 
+import java.util.List;
+
 public class Classes {
     int classID;
     int year;
     String speciality;
     String className;
     String fullName;
+    List<Teacher> teachers;
+
+    public List<Teacher> getTeachers() {
+        return teachers;
+    }
+
+    public void setTeachers(List<Teacher> teachers) {
+        this.teachers = teachers;
+    }
 
     public int getClassID() {
         return classID;
@@ -49,12 +60,13 @@ public class Classes {
 
     @Override
     public String toString() {
-        return "Classes{" +
+        return "\nClasses{" +
                 "classID=" + classID +
                 ", year=" + year +
                 ", speciality='" + speciality + '\'' +
                 ", className='" + className + '\'' +
                 ", fullName='" + fullName + '\'' +
+                ", teachers=" + teachers +
                 '}';
     }
 }
